@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { TodoContext } from './Context/TodoContext';
 import TodoList from './compornent/TodoList';
 import TodoInput from './compornent/TodoInput';
 import './App.css'
@@ -102,7 +103,14 @@ function App() {
           <TodoInput onAdd = {addTodo} />
 
           {/* 목록 */}
-          <TodoList todos={todos} Delete={deleteTodo} onToggle={toggleTodo} onEdit={toggleEdit} onUpdate={updateTodo}/>
+          <TodoContext.Provider value={{
+            deleteTodo,
+            toggleTodo,
+            toggleEdit,
+            updateTodo
+          }}>
+            <TodoList todos={todos} />
+          </TodoContext.Provider>
         </div>
         <p className='copy'>@haeun</p>
      </div>
