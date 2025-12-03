@@ -37,6 +37,7 @@ function TodoList({ todos}) {
             {todosShow.map((item) => {
               return (
                 <TodoItem 
+                key={item.id}
                 item={item}
                 />
               )
